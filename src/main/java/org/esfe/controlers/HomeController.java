@@ -22,20 +22,20 @@ public class HomeController {
         public String terms(){
             return "home/terms";
         }
-        @GetMapping("/donde-estamos")
-        public String dondeEstamos() {
-            return "home/donde-estamos"; // Asegúrate de que el archivo se llame donde-estamos.html y esté en la carpeta templates/home
-        }
+    @GetMapping("/donde-estamos")
+    public String dondeEstamos() {
+        return "Home/donde-estamos";
+    }
 
-        @GetMapping("/preguntas-frecuentes")
-        public String preguntasFrecuentes() {
-            return "home/preguntas-frecuentes";
-        }
+    @GetMapping("/preguntas-frecuentes")
+    public String preguntasFrecuentes() {
+        return "Home/preguntas-frecuentes";
+    }
 
-        @GetMapping("/precios")
-        public String precios() {
-            return "home/precios";
-        }
+    @GetMapping("/precios")
+    public String precios() {
+        return "canchas/precios";
+    }
 
         @GetMapping("/reservar-cancha")
         public String reservarCancha() {
