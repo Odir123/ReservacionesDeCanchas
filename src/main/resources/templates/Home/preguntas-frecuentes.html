@@ -1,10 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.1/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilo personalizado para preguntas frecuentes */
+        details {
+            background-color: #1f2937;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        summary {
+            font-weight: 600;
+            color: #f9fafb;
+            cursor: pointer;
+        }
+
+        p {
+            color: #e5e7eb;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-900 text-white">
+
+<!-- Sección de Preguntas Frecuentes -->
+<section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-semibold text-center mb-12">Preguntas Frecuentes</h1>
+
+        <!-- Pregunta 1 -->
+        <details>
+            <summary>¿Cómo puedo reservar una cancha?</summary>
+            <p>Para reservar una cancha, visita la sección de "Reserva de Cancha" en nuestro sitio web. Elige la cancha, la fecha y la hora que prefieras, y sigue las instrucciones para completar tu reserva.</p>
+        </details>
+
+        <!-- Pregunta 2 -->
+        <details>
+            <summary>¿Cuáles son los métodos de pago aceptados?</summary>
+            <p>Aceptamos pagos con tarjeta de crédito, tarjeta de débito, y transferencias bancarias. Puedes realizar el pago directamente en nuestro sitio web al completar tu reserva.</p>
+        </details>
+
+        <!-- Pregunta 3 -->
+        <details>
+            <summary>¿Puedo cancelar o modificar mi reserva?</summary>
+            <p>Sí, puedes cancelar o modificar tu reserva hasta 24 horas antes de la hora programada. Para hacerlo, accede a tu cuenta y visita la sección de "Mis Reservas".</p>
+        </details>
+
+        <!-- Pregunta 4 -->
+        <details>
+            <summary>¿Ofrecen algún tipo de descuento para grupos grandes?</summary>
+            <p>Sí, ofrecemos descuentos para reservas grupales. Por favor, contáctanos directamente para obtener más información sobre las tarifas especiales para grupos.</p>
+        </details>
+
+        <!-- Pregunta 5 -->
+        <details>
+            <summary>¿Qué equipo necesito llevar para jugar?</summary>
+            <p>Recomendamos que los jugadores traigan su propio equipo, incluyendo calzado adecuado, ropa deportiva y un balón de fútbol. Sin embargo, también ofrecemos alquiler de equipo en nuestras instalaciones.</p>
+        </details>
+    </div>
+</section>
 
 </body>
 </html>
