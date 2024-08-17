@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,13 +81,35 @@
         .register-container .register-link:hover {
             text-decoration: underline;
         }
+        .register-container .checkbox-container {
+            margin-top: 10px;
+            text-align: left;
+        }
+        .register-container .checkbox-container label {
+            display: inline;
+        }
     </style>
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById("contrasenia");
+            const checkbox = document.getElementById("show-password");
+            passwordField.type = checkbox.checked ? "text" : "password";
+        }
+
+        // Mostrar mensaje de registro exitoso
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('success')) {
+                alert("Usuario registrado con éxito");
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="register-container">
     <img src="https://static.vecteezy.com/system/resources/previews/009/267/048/non_2x/user-icon-design-free-png.png" alt="User Icon">
     <h1>Registro de Usuario</h1>
-    <form action="/guardar-usuario" method="post">
+    <form th:action="@{/usuario/register}" th:object="${usuario}" method="post">
         <div class="input-group">
             <div>
                 <label for="nombre">Nombre:</label>
@@ -106,6 +128,11 @@
 
         <label for="contrasenia">Contraseña:</label>
         <input type="password" id="contrasenia" name="contrasenia" required>
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="show-password" onclick="togglePasswordVisibility()">
+            <label for="show-password">Mostrar contraseña</label>
+        </div>
 
         <input type="submit" value="Guardar">
     </form>

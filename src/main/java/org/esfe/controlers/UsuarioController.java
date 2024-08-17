@@ -1,3 +1,4 @@
+
 package org.esfe.controlers;
 
 import org.esfe.entities.Usuario;
@@ -15,6 +16,8 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {

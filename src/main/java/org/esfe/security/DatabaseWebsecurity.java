@@ -12,32 +12,46 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-
 public class DatabaseWebsecurity {
+
     @Bean
-    public UserDetailsManager customUsers(DataSource dataSource){
+    public UserDetailsManager customUsers(DataSource dataSource) {
         JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
-        users.setUsersByUsernameQuery("select user_name, password, status from usuarios where user_name = ?");
-        users.setAuthoritiesByUsernameQuery("select u.user_name, r.nombre from usuario_rol ur " +
-                "inner join usuarios u on u.id = ur.usuario_id " +
-                "inner join roles r on r.id = ur.rol_id " +
-                "where u.user_name = ?");
+
+        // Query para obtener los detalles del usuario (nombre, contraseña y estado)
+        users.setUsersByUsernameQuery(
+                "SELECT nombre AS username, contrasenia AS password, 1 AS enabled FROM usuario WHERE nombre = ?"
+        );
+
+        // Query para obtener los roles asociados con el usuario
+        users.setAuthoritiesByUsernameQuery(
+                "SELECT u.nombre AS username, r.nombre AS authority " +
+                        "FROM usuario_rol ur " +
+                        "INNER JOIN usuario u ON u.id = ur.usuario_id " +
+                        "INNER JOIN rol r ON r.id = ur.rol_id " +
+                        "WHERE u.nombre = ?"
+        );
 
         return users;
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
-                // aperturar el acceso a los recursos estáticos
+                // Permitir acceso a recursos estáticos
                 .requestMatchers("/assets/**", "/css/**", "/js/**").permitAll()
-                // las vistas públicas no requieren autenticación
+                // Permitir vistas públicas
                 .requestMatchers("/", "/privacy", "/terms").permitAll()
-                // todas las demás vistas tampoco requieren autenticación
-                .anyRequest().permitAll());
-        // Opcionalmente puedes eliminar o comentar la línea de formulario de login
-        // http.formLogin(form -> form.permitAll());
+                // Permitir acceso a todas las demás vistas sin autenticación
+                .anyRequest().permitAll()
+        );
+        // Opcionalmente puedes habilitar el formulario de login:
+        http.formLogin(form -> form.permitAll());
 
         return http.build();
     }
 }
+
+
+
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,16 +74,19 @@
 <body>
 <div class="login-container">
   <img src="https://static.vecteezy.com/system/resources/previews/009/267/048/non_2x/user-icon-design-free-png.png" alt="User Icon">
-  <h2>Login</h2>
-  <input type="text" placeholder="Username" required>
-  <input type="password" placeholder="Password" id="password" required>
-  <div class="password-container">
-    <label>
-      <input type="checkbox" onclick="togglePassword()"> Show Password
-    </label>
-  </div>
-  <button type="submit">Login</button>
-  <a href="/register" class="register-link">If you have not registered, sign up to log in</a>
+  <h2>Inicio</h2>
+  <form th:action="/login"  method="post">
+    <input type="text" name="username" placeholder="Nombre de Usuario" required>
+    <input type="password" name="password" placeholder="Contraseña" id="password" required>
+    <div class="password-container">
+      <label>
+        <input type="checkbox" onclick="togglePassword()"> Mostrar Contraseña
+      </label>
+    </div>
+    <button type="submit">Login</button>
+  </form>
+
+  <a href="/register" class="register-link">Si no te has registrado, regístrate para iniciar sesión</a>
 </div>
 
 <script>
@@ -97,4 +100,5 @@
   }
 </script>
 </body>
+
 </html>

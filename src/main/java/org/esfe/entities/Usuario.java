@@ -29,14 +29,15 @@ public class Usuario {
     @NotBlank(message = "El correo es requerido")
     private String correo;
 
+
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol",
             joinColumns = @JoinColumn(name = "usuario_id"),
             inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private List<Rol> roles;
 
-    @Column(nullable = false)
-    private Boolean estado;
+
 
     public Integer getId() {
         return id;
@@ -86,13 +87,6 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
 
     public List<Rol> getRoles() {
         return roles;

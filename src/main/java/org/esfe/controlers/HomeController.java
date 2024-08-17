@@ -13,15 +13,16 @@ public class HomeController {
 
 
 
-        @GetMapping("/privacy")
-        public String privacy(){
-            return "home/privacy";
-        }
 
-        @GetMapping("/terms")
-        public String terms(){
-            return "home/terms";
-        }
+    @GetMapping("/privacy")
+    public String privacy(){
+        return "home/privacy";
+    }
+
+    @GetMapping("/terms")
+    public String terms(){
+        return "home/terms";
+    }
     @GetMapping("/donde-estamos")
     public String dondeEstamos() {
         return "Home/donde-estamos";
@@ -37,8 +38,8 @@ public class HomeController {
         return "canchas/precios";
     }
 
-        @GetMapping("/reservar-cancha")
-        public String reservarCancha() {
-            return "canchas/reservar";
-        }
+    @GetMapping("/reservar-cancha")
+    public String reservarCancha() {
+        return "canchas/reservar";
     }
+}
