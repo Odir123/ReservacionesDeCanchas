@@ -26,20 +26,21 @@ public class DatabaseWebsecurity {
         // Query para obtener los roles asociados con el usuario
         users.setAuthoritiesByUsernameQuery(
                 "SELECT u.nombre AS username, r.nombre AS authority " +
-                        "FROM usuario_rol ur " +
-                        "INNER JOIN usuario u ON u.id = ur.usuario_id " +
-                        "INNER JOIN rol r ON r.id = ur.rol_id " +
+                        "FROM usuario u " +
+                        "INNER JOIN rol r ON u.rol_id = r.id " +
                         "WHERE u.nombre = ?"
         );
 
         return users;
     }
 
+
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
                 // Permitir acceso a recursos estáticos
-                .requestMatchers("/assets/**", "/css/**", "/js/**").permitAll()
+                .requestMatchers("/assets/*", "/css/", "/js/*").permitAll()
                 // Permitir vistas públicas
                 .requestMatchers("/", "/privacy", "/terms").permitAll()
                 // Permitir acceso a todas las demás vistas sin autenticación

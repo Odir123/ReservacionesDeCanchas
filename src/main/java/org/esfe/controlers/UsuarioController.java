@@ -1,4 +1,3 @@
-
 package org.esfe.controlers;
 
 import org.esfe.entities.Usuario;
@@ -28,11 +27,12 @@ public class UsuarioController {
     @PostMapping("/register")
     public String registerUser(Usuario usuario) {
         usuarioService.registrarUsuario(usuario);
-        return "redirect:/login";
+        return "redirect:/";
     }
 
     @GetMapping("/login")
     public String showLoginForm() {
         return "login";
     }
+
 }
