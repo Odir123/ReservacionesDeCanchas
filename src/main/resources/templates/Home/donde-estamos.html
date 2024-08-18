@@ -9,19 +9,57 @@
 </head>
 <body class="bg-gray-900 text-white">
 
+<!-- Barra de navegación -->
+<nav class="navbar bg-gray-800 p-4">
+    <ul class="nav flex justify-center space-x-4">
+        <li><a href="/" class="nav-item text-white">Inicio</a></li>
+        <li><a href="/donde-estamos" class="nav-item text-white">Dónde Estamos</a></li>
+        <li><a href="/preguntas-frecuentes" class="nav-item text-white">Preguntas Frecuentes</a></li>
+        <li><a href="/precios" class="nav-item text-white">Precios</a></li>
+    </ul>
+</nav>
+
 <!-- Sección de Dónde Estamos -->
 <section class="py-16 px-6 bg-gray-800">
     <div class="max-w-4xl mx-auto text-center">
         <h1 class="text-4xl font-semibold mb-12">Dónde Estamos</h1>
 
+        <!-- Lista de canchas -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Ubicación de Nuestras Canchas</h2>
+            <ul class="list-disc text-left mx-auto max-w-lg">
+                <li><a href="https://www.google.com/maps?q=Cancha+El+Mirador&z=15" class="text-blue-400 hover:underline">Cancha El Mirador</a></li>
+                <li><a href="https://www.google.com/maps?q=Cancha+Central&z=15" class="text-blue-400 hover:underline">Cancha Central</a></li>
+                <li><a href="https://www.google.com/maps?q=Cancha+Los+Almendros&z=15" class="text-blue-400 hover:underline">Cancha Los Almendros</a></li>
+                <li><a href="https://www.google.com/maps?q=Cancha+La+Colina&z=15" class="text-blue-400 hover:underline">Cancha La Colina</a></li>
+                <li><a href="https://www.google.com/maps?q=Cancha+Vista+Hermosa&z=15" class="text-blue-400 hover:underline">Cancha Vista Hermosa</a></li>
+                <li><a href="https://www.google.com/maps?q=Cancha+El+Retiro&z=15" class="text-blue-400 hover:underline">Cancha El Retiro</a></li>
+            </ul>
+        </div>
+
         <!-- Mapa Integrado -->
         <div class="mb-8">
-            <iframe class="w-full h-96 rounded-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.5051779120484!2d-122.08424968469244!3d37.42199997982468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fba1f1bfb04d3%3A0x4c9e1c3f4c82d64d!2sGoogleplex!5e0!3m2!1ses!2sus!4v1607114143827!5m2!1ses!2sus" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            <iframe id="map" class="w-full h-96 rounded-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.5051779120484!2d-122.08424968469244!3d37.42199997982468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fba1f1bfb04d3%3A0x4c9e1c3f4c82d64d!2sGoogleplex!5e0!3m2!1ses!2sus!4v1607114143827!5m2!1ses!2sus" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </div>
 
         <p class="text-lg">Nos encontramos en una ubicación céntrica de fácil acceso. Visítanos y disfruta de nuestras instalaciones de primer nivel.</p>
     </div>
 </section>
+
+<script>
+    // Actualizar el src del iframe con la ubicación seleccionada
+    document.querySelectorAll('a[href^="https://www.google.com/maps?q="]').forEach(link => {
+        link.addEventListener('click', event => {
+            event.preventDefault();
+            const url = event.target.href;
+            document.getElementById('map').src = url.replace('q=', 'q=&t='); // Añade el parámetro 't' para la vista en mapa
+            window.scrollTo({
+                top: document.querySelector('iframe').offsetTop,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
 
 </body>
 </html>

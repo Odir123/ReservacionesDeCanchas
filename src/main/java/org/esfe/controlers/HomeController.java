@@ -42,4 +42,8 @@ public class HomeController {
     public String reservarCancha() {
         return "canchas/reservar";
     }
+    @GetMapping("/cliente")
+    public String cliente() {
+        return "Home/cliente";
+    }
 }

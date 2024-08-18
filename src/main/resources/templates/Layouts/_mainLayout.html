@@ -70,24 +70,6 @@
             color: #ccc;
         }
 
-        .nav-indicator {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 4px;
-            transition: 0.4s;
-            height: 5px;
-            z-index: 1;
-            border-radius: 8px 8px 0 0;
-        }
-
-        @media (max-width: 580px) {
-            .nav {
-                overflow-x: auto;
-                flex-wrap: nowrap;
-            }
-        }
-
         .hero-section {
             background-image: url('https://static.vecteezy.com/system/resources/thumbnails/038/957/904/small_2x/ai-generated-soccer-stadium-with-green-field-for-football-competition-match-football-cup-tournament-photo.jpeg');
             background-size: cover;
@@ -119,6 +101,56 @@
             margin-top: 20px;
             max-width: 800px;
         }
+
+        .info-section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        .info-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .info-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #333333;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item {
+            flex: 1 1 calc(33.333% - 30px);
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item {
+                flex: 1 1 calc(50% - 30px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-item {
+                flex: 1 1 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -129,26 +161,44 @@
         <li><a href="/donde-estamos" class="nav-item">Dónde Estamos</a></li>
         <li><a href="/preguntas-frecuentes" class="nav-item">Preguntas Frecuentes</a></li>
         <li><a href="/precios" class="nav-item">Precios</a></li>
-        <li><a href="/reservar-cancha" class="nav-item">Reserva tu Cancha</a></li>
+
     </ul>
 </nav>
-<div class="nav">
-    <a class="nav-item" th:href="@{/home}">Home</a>
-    <a class="nav-item" th:href="@{/privacy}">Privacidad</a>
-    <a class="nav-item" th:href="@{/terms}">Términos</a>
-    <a class="nav-item" th:href="@{/donde-estamos}">¿Dónde estamos?</a>
-    <a class="nav-item" th:href="@{/preguntas-frecuentes}">Preguntas frecuentes</a>
-    <a class="nav-item" th:href="@{/precios}">Precios</a>
-    <a class="nav-item" th:href="@{/reservar-cancha}">Reservar Cancha</a>
-</div>
-
 
 <!-- Sección Principal -->
 <section class="hero-section">
     <div>
-        <h1>ENTRENA</h1>
-        <h2>DISFRUTA</h2>
-        <p>El éxito no es un accidente. Es trabajo duro, perseverancia, aprendizaje, estudio, sacrificio y, sobre todo, amor por lo que estás haciendo o aprendiendo a hacer.</p>
+        <h1>¡Bienvenido!</h1>
+        <h2>Tu Lugar de Fútbol en Sonsonate</h2>
+        <p>Descubre nuestras increíbles canchas de fútbol y reserva el espacio perfecto para tus partidos y entrenamientos. Disfruta de instalaciones de primera y un entorno diseñado para el deporte que amas.</p>
+    </div>
+</section>
+
+<!-- Sección de Información -->
+<section class="info-section">
+    <h2>Alquila la Cancha Perfecta</h2>
+    <p>Nuestras canchas están ubicadas en el hermoso departamento de Sonsonate, ofreciendo espacios modernos y bien equipados para satisfacer todas tus necesidades deportivas. Ya sea para un partido amistoso o un torneo, tenemos la cancha ideal para ti.</p>
+</section>
+
+<!-- Galería de Imágenes -->
+<section class="gallery">
+    <div class="gallery-item">
+        <img src="https://th.bing.com/th/id/R.14e0098819216c65db0ada168b36b7b3?rik=V9bGP%2fTb28%2btEw&pid=ImgRaw&r=0&sres=1&sresct=1" alt="Cancha 1">
+    </div>
+    <div class="gallery-item">
+        <img src="https://imer.gov.co/wp-content/uploads/2020/07/02-Cancha-de-futbol-Cabeceras-1024x683.jpg" alt="Cancha 2">
+    </div>
+    <div class="gallery-item">
+        <img src="https://th.bing.com/th/id/OIP.loH46dQrw5YVWjsb9PUgEgHaE8?pid=ImgDet&w=474&h=316&rs=1" alt="Cancha 3">
+    </div>
+    <div class="gallery-item">
+        <img src="https://th.bing.com/th/id/OIP.8c95HcJ-bF3FHXnDX1kQ5QHaE8?pid=ImgDet&w=474&h=316&rs=1" alt="Cancha 4">
+    </div>
+    <div class="gallery-item">
+        <img src="https://www.tudograma.com.br/images/blog/entenda-qual-o-impacto-da-grama-sintetica-para-campo-de-futebol-na-qualidade-de-jogo-dos-jogadores/entenda-qual-o-impacto-da-grama-sintetica-para-campo-de-futebol-na-qualidade-de-jogo-dos-jogadores-3.jpg" alt="Cancha 5">
+    </div>
+    <div class="gallery-item">
+        <img src="https://www.thomascook.com/gfx/785/490/L2ltYWdlcy9tYWtpcy83ZDYwOTE3ODc4Yjg0YTQ1ODM1NGU4YzkzMzA5MDQ5MC5qcGc.webp" alt="Cancha 6">
     </div>
 </section>
 
