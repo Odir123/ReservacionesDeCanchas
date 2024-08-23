@@ -12,29 +12,20 @@
             padding: 0;
             height: 100vh;
             display: flex;
-            justify-content: flex-end; /* Alinea el menú a la derecha */
             background-color: #f0f0f0; /* Fondo neutro */
         }
 
         /* Contenedor del menú */
         .menu-container {
-            width: 200px;
-            background-color: rgba(0, 0, 0, 0.7);
+            width: 220px;
+            background-color: #ffffff; /* Fondo blanco para el menú */
             border-radius: 10px 0 0 10px;
             padding: 20px 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between; /* Espacio entre elementos */
-        }
-
-        /* Estilo de las líneas del menú hamburguesa */
-        .menu-hamburguesa {
-            width: 30px;
-            height: 3px;
-            background-color: white;
-            margin: 5px 0;
-            transition: 0.4s;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle un toque elegante */
         }
 
         /* Enlaces del menú */
@@ -43,46 +34,89 @@
             flex-direction: column;
             width: 100%;
             flex-grow: 1; /* Para empujar el ícono hacia abajo */
+            margin-bottom: 20px;
         }
 
         .menu-desplegable a {
-            color: white;
+            color: #000; /* Color de texto negro para los enlaces */
             padding: 15px;
             text-decoration: none;
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(0, 0, 0, 0.05);
             margin-bottom: 10px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+            font-weight: bold; /* Texto en negrita */
         }
 
         .menu-desplegable a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(0, 0, 0, 0.1);
         }
 
         /* Estilo del ícono en la parte inferior */
         .menu-icono {
             margin-top: 20px;
+            text-align: center;
         }
 
         .menu-icono img {
-            width: 50px;
+            width: 70px;
             height: auto;
+        }
+
+        .menu-icono p {
+            color: #000; /* Color de texto negro para el mensaje */
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold; /* Negrita */
+        }
+
+        /* Estilos para la sección de contenido */
+        .content-section {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .content-section h1 {
+            font-size: 36px;
+            color: #333; /* Color principal para el título */
+            margin-bottom: 10px;
+        }
+
+        .content-section h2 {
+            font-size: 28px;
+            color: #555; /* Color secundario para el subtítulo */
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            font-size: 18px;
+            color: #777; /* Color del texto */
+            max-width: 600px; /* Ancho máximo para el texto */
         }
     </style>
 </head>
 <body>
 <div class="menu-container">
-    <div class="menu">
-
-    </div>
     <div class="menu-desplegable">
         <a href="#">Cancha</a>
         <a href="#">Clientes</a>
     </div>
     <div class="menu-icono">
         <img src="https://th.bing.com/th/id/R.0ababdb27dd0bb71f21f03c98b6cd6f1?rik=%2fiVDxahrgNztPA&pid=ImgRaw&r=0" alt="Icono">
+        <p> Administrador</p>
     </div>
 </div>
+<section class="content-section">
+    <div>
+        <h1>¡Bienvenido!</h1>
+        <h2>ADMINISTRADOR</h2>
+
+    </div>
+</section>
 </body>
 </html>
