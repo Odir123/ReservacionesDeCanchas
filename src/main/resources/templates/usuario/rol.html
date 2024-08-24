@@ -86,16 +86,17 @@
     <h2>Asignar Rol</h2>
     <!-- Mensaje de éxito -->
     <div th:if="${message}" class="message" th:text="${message}"></div>
-    <form th:action="#" th:object="${/rol}" method="post">
+
+    <form th:action="@{/usuario/guardarRol}" th:object="${rol}" method="post">
         <div class="input-group">
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
+            <input type="text" id="nombre" th:field="*{nombre}" required>
         </div>
         <div class="input-group">
             <label for="estado">Estado:</label>
-            <select id="estado" name="rol" required>
-                <option value="activo">Activo</option>
-                <option value="inactivo">Inactivo</option>
+            <select id="estado" th:field="*{estado}" required>
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
             </select>
         </div>
         <input type="submit" value="Guardar">

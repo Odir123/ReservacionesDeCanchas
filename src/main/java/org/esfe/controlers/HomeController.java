@@ -48,6 +48,6 @@ public class HomeController {
     }
 
     @GetMapping("/rol")
-    public String Rol()
+    public String rol()
     {return "usuario/rol";}
 }

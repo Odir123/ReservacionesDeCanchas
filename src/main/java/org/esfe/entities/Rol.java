@@ -15,7 +15,7 @@ public class Rol {
     private String nombre;
 
     @Column(nullable = false)
-    private Boolean estado;
+    private Integer estado;
 
     public Integer getId() {
         return id;
@@ -33,11 +33,11 @@ public class Rol {
         this.nombre = nombre;
     }
 
-    public Boolean getEstado() {
+    public Integer getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(Integer estado) {
         this.estado = estado;
     }
 }
