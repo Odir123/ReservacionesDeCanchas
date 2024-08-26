@@ -57,7 +57,10 @@ public class ReservaController {
         }
         return "redirect:/reservas/nueva?error";
     }
-
+    @GetMapping("/datos")
+    public String datos() {
+        return "usuario/datos";
+    }
 
 }
 
