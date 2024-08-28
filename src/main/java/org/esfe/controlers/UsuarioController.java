@@ -1,6 +1,7 @@
 package org.esfe.controlers;
 
 import org.esfe.entities.Usuario;
+import org.esfe.interfaces.RolService;
 import org.esfe.interfaces.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +24,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private RolService rolService;
 
     @GetMapping("/index")
     public String index(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
@@ -70,15 +74,14 @@ public class UsuarioController {
     }
 
     @GetMapping("/create")
-    public String showCreateForm(Model model) {
-        model.addAttribute("usuario", new Usuario());
-        //model.addAttribute("roles", roleService.findAll()); // Assuming you have a service to fetch roles
-        return "Usuario/create";
+    public String showCreateForm(Usuario usuario, Model model) {
+        model.addAttribute("roles", rolService.getAll()); // Assuming you have a service to fetch roles
+        return "usuario/create";
     }
 
 
     @PostMapping("/save")
-    public String save(@ModelAttribute Usuario usuario, BindingResult result, Model model, RedirectAttributes attributes) {
+    public String save(@RequestParam("rol") Integer rol, Usuario usuario, BindingResult result, Model model, RedirectAttributes attributes) {
         if (result.hasErrors()) {
             model.addAttribute("usuario", usuario);
             attributes.addFlashAttribute("error", "No se pudo guardar debido a un error.");

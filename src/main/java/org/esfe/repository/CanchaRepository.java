@@ -4,6 +4,5 @@ package org.esfe.repository;
 import org.esfe.entities.Cancha;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CanchaRepository extends JpaRepository<Cancha, Long> {
-    Cancha findByNombre(String nombre);
+public interface CanchaRepository extends JpaRepository<Cancha, Long> {;
 }
