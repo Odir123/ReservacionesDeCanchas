@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Cliente</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #36ff33;
+        }
+        .container {
+            padding: 40px;
+            background: #1f1f1f;
+            color: #ffffff;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 100px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1, h3 {
+            color: #36ff33;
+            text-align: center;
+        }
+        dt {
+            color: #36ff33;
+        }
+        .btn-danger {
+            background-color: #b30000;
+            border-color: #990000;
+        }
+    </style>
+</head>
+
+<body>
+<div layout:fragment="content" class="container">
+    <h1>Eliminar Cliente</h1>
+    <h3>¿Está seguro que desea eliminar este cliente?</h3>
+    <dl class="row">
+        <dt class="col-sm-3">ID</dt>
+        <dd class="col-sm-9" th:text="${cliente.id}"></dd>
+        <dt class="col-sm-3">Nombre</dt>
+        <dd class="col-sm-9" th:text="${cliente.nombre}"></dd>
+        <dt class="col-sm-3">Apellido</dt>
+        <dd class="col-sm-9" th:text="${cliente.apellido}"></dd>
+        <dt class="col-sm-3">Teléfono</dt>
+        <dd class="col-sm-9" th:text="${cliente.telefono}"></dd>
+        <dt class="col-sm-3">Correo</dt>
+        <dd class="col-sm-9" th:text="${cliente.correo}"></dd>
+        <dt class="col-sm-3">DUI</dt>
+        <dd class="col-sm-9" th:text="${cliente.dui}"></dd>
+        <dt class="col-sm-3">Estado</dt>
+        <dd class="col-sm-9" th:text="${cliente.estado} ? 'Activo' : 'Inactivo'"></dd>
+    </dl>
+    <form th:action="@{/cliente/delete}" method="post">
+        <input type="hidden" name="id" th:value="${cliente.id}">
+        <div class="d-flex justify-content-between">
+            <input type="submit" value="Eliminar" class="btn btn-danger">
+            <a th:href="@{/cliente/index}" class="btn btn-dark">Regresar</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

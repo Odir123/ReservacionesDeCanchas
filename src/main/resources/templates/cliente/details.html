@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Cliente</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #36ff33;
+        }
+        .container {
+            padding: 40px;
+            background: #1f1f1f;
+            color: #ffffff;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 100px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #36ff33;
+            text-align: center;
+        }
+        dt {
+            color: #36ff33;
+        }
+    </style>
+</head>
+
+<body>
+<div layout:fragment="content" class="container">
+    <h1>Detalles del Cliente</h1>
+    <dl class="row">
+        <dt class="col-sm-3">ID</dt>
+        <dd class="col-sm-9" th:text="${cliente.id}"></dd>
+        <dt class="col-sm-3">Nombre</dt>
+        <dd class="col-sm-9" th:text="${cliente.nombre}"></dd>
+        <dt class="col-sm-3">Apellido</dt>
+        <dd class="col-sm-9" th:text="${cliente.apellido}"></dd>
+        <dt class="col-sm-3">Teléfono</dt>
+        <dd class="col-sm-9" th:text="${cliente.telefono}"></dd>
+        <dt class="col-sm-3">Correo</dt>
+        <dd class="col-sm-9" th:text="${cliente.correo}"></dd>
+        <dt class="col-sm-3">DUI</dt>
+        <dd class="col-sm-9" th:text="${cliente.dui}"></dd>
+        <dt class="col-sm-3">Estado</dt>
+        <dd class="col-sm-9" th:text="${cliente.estado} ? 'Activo' : 'Inactivo'"></dd>
+    </dl>
+    <div class="d-flex justify-content-between">
+        <a th:href="@{/cliente/edit/{id}(id=${cliente.id})}" class="btn btn-outline-info">Editar</a>
+        <a th:href="@{/cliente/index}" class="btn btn-outline-dark">Regresar</a>
+    </div>
+</div>
+</body>
+</html>

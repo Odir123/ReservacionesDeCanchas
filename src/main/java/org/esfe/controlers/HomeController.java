@@ -47,7 +47,6 @@ public class HomeController {
         return "Home/cliente";
     }
 
-    @GetMapping("/rol")
-    public String rol()
-    {return "usuario/rol";}
+
+
 }

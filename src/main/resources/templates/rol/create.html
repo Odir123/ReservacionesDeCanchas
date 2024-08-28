@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Nuevo Rol</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #36ff33; /* Fondo verde oscuro */
+        }
+        .form-container {
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-box {
+            background: #1f1f1f; /* Fondo oscuro para el formulario */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            max-width: 500px;
+            width: 100%;
+        }
+        .form-title {
+            color: #36ff33; /* Color verde oscuro para el título */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group label {
+            color: #ffffff; /* Texto blanco para las etiquetas */
+        }
+        .form-group input, .form-group select {
+            background-color: #333333; /* Fondo oscuro para los campos */
+            color: #ffffff; /* Texto blanco para los campos */
+            border: 1px solid #444444; /* Borde más claro para los campos */
+        }
+        .form-group input::placeholder, .form-group select {
+            color: #aaaaaa; /* Texto de placeholder en gris claro */
+        }
+        .form-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn-primary {
+            background-color: #0056b3; /* Azul oscuro para el botón de guardar */
+            border-color: #004494; /* Borde azul más oscuro */
+        }
+        .btn-dark {
+            background-color: #333333; /* Fondo oscuro para el botón de regresar */
+            border-color: #222222; /* Borde más oscuro */
+        }
+    </style>
+</head>
+
+<body>
+<div layout:fragment="content" class="form-container">
+    <div class="form-box">
+        <h1 class="form-title">Crear Nuevo Rol</h1>
+        <form th:action="@{/rol/save}" th:object="${rol}" method="post">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" th:field="*{nombre}" id="nombre" placeholder="Escriba el nombre del rol" required>
+            </div>
+            <div class="form-group">
+                <label for="estado">Estado</label>
+                <select class="form-control" th:field="*{estado}" id="estado" required>
+                    <option value="1" th:selected="${rol.estado == 1}">Activo</option>
+                    <option value="2" th:selected="${rol.estado == 2}">Inactivo</option>
+                </select>
+            </div>
+            <hr>
+            <div class="form-buttons">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Guardar
+                </button>
+                <a th:href="@{/rol}" class="btn btn-dark">
+                    <i class="fas fa-window-close"></i> Regresar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
