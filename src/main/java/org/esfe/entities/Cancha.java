@@ -4,16 +4,13 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
 @Table(name = "cancha")
 public class Cancha {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;  // Cambié Integer a Long para que coincida con el repositorio.
 
     @NotBlank(message = "El nombre es requerido")
     @Column(nullable = false)
@@ -41,12 +38,12 @@ public class Cancha {
     @Column(nullable = false)
     private Boolean estado;
 
-    // Getters and Setters
-    public Integer getId() {
+    // Getters y Setters
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,58 +1,69 @@
-<!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="/layouts/_mainLayout">
 
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Canchas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
 <div layout:fragment="content">
-    <!-- Mostrar mensaje de confirmación en caso de éxito -->
+    <!-- Mensaje de confirmación -->
     <div th:if="${msg != null}">
         <script>
             Swal.fire({
-              title: "Confirmación",
-              text: '[[${msg}]]',
-              icon: "success"
+                title: "Confirmación",
+                text: '[[${msg}]]',
+                icon: "success"
             });
         </script>
     </div>
 
-    <!-- Mostrar mensaje de error en caso de error -->
+    <!-- Mensaje de error -->
     <div th:if="${error != null}">
         <script>
             Swal.fire({
-              title: "Error",
-              text: '[[${error}]]',
-              icon: "success"
+                title: "Error",
+                text: '[[${error}]]',
+                icon: "error"
             });
         </script>
     </div>
 
-    <h1>Listado de Docentes</h1>
-    <a th:href="@{/docentes/create}" class="btn btn-outline-primary">Nuevo docente</a>
+    <h1>Listado de Canchas</h1>
+    <a th:href="@{/canchas/create}" class="btn btn-outline-primary">Nueva Cancha</a>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>ID</th>
             <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Email</th>
-            <th>Teléfono</th>
-            <th>Escuela</th>
+            <th>Tipo</th>
+            <th>Ubicación</th>
+            <th>Tarifa por Hora</th>
+            <th>Descripción</th>
+            <th>Imagen 1</th>
+            <th>Imagen 2</th>
+            <th>Imagen 3</th>
+            <th>Estado</th>
             <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="item : ${docentes}">
-            <td th:text="${item.id}"></td>
-            <td th:text="${item.nombre}"></td>
-            <td th:text="${item.apellido}"></td>
-            <td th:text="${item.email}"></td>
-            <td th:text="${item.telefono}"></td>
-            <td th:text="${item.escuela}"></td>
+        <tr th:each="cancha : ${canchas}">
+            <td th:text="${cancha.nombre}"></td>
+            <td th:text="${cancha.tipo}"></td>
+            <td th:text="${cancha.ubicacion}"></td>
+            <td th:text="${cancha.tarifaPorHora}"></td>
+            <td th:text="${cancha.descripcion}"></td>
+            <td th:text="${cancha.imagen1}"></td>
+            <td th:text="${cancha.imagen2}"></td>
+            <td th:text="${cancha.imagen3}"></td>
+            <td th:text="${cancha.estado}"></td>
             <td>
-                <a th:href="@{/docentes/details/{id} (id = ${item.id}) }" class="btn btn-outline-secondary">Detalles</a> |
-                <a th:href="@{/docentes/edit/{id} (id = ${item.id}) }" class="btn btn-outline-info">Editar</a> |
-                <a th:href="@{/docentes/remove/{id} (id = ${item.id}) }" class="btn btn-outline-danger">Eliminar</a>
+                <a th:href="@{/cancha/details/{id} (id = ${cancha.id}) }" class="btn btn-outline-secondary"><i class="fas fa-eye"></i></a> |
+                <a th:href="@{/cancha/edit/{id} (id = ${cancha.id}) }" class="btn btn-outline-info"><i class="fas fa-edit"></i></a> |
+                <a th:href="@{/cancha/remove/{id} (id = ${cancha.id}) }" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
             </td>
         </tr>
         </tbody>
@@ -61,9 +72,14 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item" th:each="pageNumber : ${pageNumbers}">
-                <a class="page-link" th:href="@{|/docentes?page=${pageNumber}|}" th:text="${pageNumber}"></a>
+                <a class="page-link" th:href="@{|/cancha?page=${pageNumber}|}" th:text="${pageNumber}"></a>
             </li>
         </ul>
     </nav>
-
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,139 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Cancha</title>
+    <title>Crear Cancha</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #1c2331;
-            margin: 0;
-            padding: 0;
+            background-color: #36ff33; /* Fondo verde oscuro */
+            color: #ffffff;
+        }
+        .form-container {
+            padding: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
-        .container {
-            background-color: #2a3b55;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        .form-box {
+            background: #1f1f1f; /* Fondo oscuro para el formulario */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             max-width: 600px;
             width: 100%;
-            color: #fff;
         }
-        h2 {
-            text-align: center;
-            color: #d1d8e0;
+        .form-title {
+            color: #36ff33; /* Color verde oscuro para el título */
             margin-bottom: 20px;
-        }
-        .form-group {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
+            text-align: center;
         }
         .form-group label {
-            width: 30%;
-            font-weight: bold;
+            color: #ffffff; /* Texto blanco para las etiquetas */
         }
-        .form-group input[type="text"],
-        .form-group input[type="number"],
-        .form-group input[type="file"],
-        .form-group textarea,
-        .form-group select {
-            width: 65%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 14px;
-            background-color: #34495e;
-            color: #fff;
+        .form-group input, .form-group select, .form-group textarea {
+            background-color: #333333; /* Fondo oscuro para los campos */
+            color: #ffffff; /* Texto blanco para los campos */
+            border: 1px solid #444444; /* Borde más claro para los campos */
         }
-        .form-group textarea {
-            resize: vertical;
-            height: 100px;
+        .form-group input::placeholder, .form-group select, .form-group textarea {
+            color: #aaaaaa; /* Texto de placeholder en gris claro */
         }
-        .form-actions {
+        .form-buttons {
+            margin-top: 20px;
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
         }
-        .form-actions button {
-            width: 48%;
-            padding: 12px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            color: #fff;
+        .btn-primary {
+            background-color: #0056b3; /* Azul oscuro para el botón de guardar */
+            border-color: #004494; /* Borde azul más oscuro */
         }
-        .form-actions .btn-save {
-            background-color: #3498db;
-        }
-        .form-actions .btn-save:hover {
-            background-color: #2980b9;
-        }
-        .form-actions .btn-cancel {
-            background-color: #e74c3c;
-        }
-        .form-actions .btn-cancel:hover {
-            background-color: #c0392b;
+        .btn-dark {
+            background-color: #333333; /* Fondo oscuro para el botón de regresar */
+            border-color: #222222; /* Borde más oscuro */
         }
     </style>
 </head>
-<body>
 
-<div class="container">
-    <h2>Registrar Cancha</h2>
-    <form action="/cancha/guardar" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-        </div>
-        <div class="form-group">
-            <label for="tipo">Tipo:</label>
-            <input type="text" id="tipo" name="tipo" required>
-        </div>
-        <div class="form-group">
-            <label for="ubicacion">Ubicación:</label>
-            <input type="text" id="ubicacion" name="ubicacion" required>
-        </div>
-        <div class="form-group">
-            <label for="tarifaPorHora">Tarifa por Hora:</label>
-            <input type="number" id="tarifaPorHora" name="tarifaPorHora" required>
-        </div>
-        <div class="form-group">
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="imagen1">Imagen 1:</label>
-            <input type="file" id="imagen1" name="imagen1" accept="image/*">
-        </div>
-        <div class="form-group">
-            <label for="imagen2">Imagen 2:</label>
-            <input type="file" id="imagen2" name="imagen2" accept="image/*">
-        </div>
-        <div class="form-group">
-            <label for="imagen3">Imagen 3:</label>
-            <input type="file" id="imagen3" name="imagen3" accept="image/*">
-        </div>
-        <div class="form-group">
-            <label for="estado">Estado:</label>
-            <select id="estado" name="estado" required>
-                <option value="true">Activo</option>
-                <option value="false">Inactivo</option>
-            </select>
-        </div>
-        <div class="form-actions">
-            <button type="submit" class="btn-save">Guardar Cancha</button>
-            <button type="reset" class="btn-cancel">Cancelar</button>
-        </div>
-    </form>
+<body>
+<div layout:fragment="content" class="form-container">
+    <div class="form-box">
+        <h1 class="form-title">Crear Cancha</h1>
+        <form th:action="@{/cancha/save}" th:object="${cancha}" method="post">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-group mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" th:field="*{nombre}" id="nombre" placeholder="Escriba el nombre de la cancha" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="tipo" class="form-label">Tipo</label>
+                <input type="text" class="form-control" th:field="*{tipo}" id="tipo" placeholder="Escriba el tipo de cancha" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="ubicacion" class="form-label">Ubicación</label>
+                <input type="text" class="form-control" th:field="*{ubicacion}" id="ubicacion" placeholder="Escriba la ubicación de la cancha" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="tarifaPorHora" class="form-label">Tarifa por Hora</label>
+                <input type="number" class="form-control" th:field="*{tarifaPorHora}" id="tarifaPorHora" placeholder="Escriba la tarifa por hora" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" th:field="*{descripcion}" id="descripcion" rows="3" placeholder="Escriba una descripción de la cancha" required></textarea>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="imagen1" class="form-label">Imagen 1</label>
+                <input type="text" class="form-control" th:field="*{imagen1}" id="imagen1" placeholder="URL de la primera imagen" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="imagen2" class="form-label">Imagen 2</label>
+                <input type="text" class="form-control" th:field="*{imagen2}" id="imagen2" placeholder="URL de la segunda imagen" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="imagen3" class="form-label">Imagen 3</label>
+                <input type="text" class="form-control" th:field="*{imagen3}" id="imagen3" placeholder="URL de la tercera imagen" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="estado" class="form-label">Estado</label>
+                <select class="form-select" th:field="*{estado}" id="estado" required>
+                    <option value="1" th:selected="${cancha.estado == 1}">Activo</option>
+                    <option value="2" th:selected="${cancha.estado == 2}">Inactivo</option>
+                </select>
+            </div>
+
+            <hr>
+            <div class="form-buttons">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Guardar Cambios
+                </button>
+                <a th:href="@{/cancha}" class="btn btn-dark">
+                    <i class="fas fa-window-close"></i> Regresar
+                </a>
+            </div>
+        </form>
+    </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
