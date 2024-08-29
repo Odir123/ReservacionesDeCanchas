@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas de Canchas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.1/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-800 p-10">
+<div class="container mx-auto">
+    <h1 class="text-3xl font-bold text-white mb-6">Lista de Reservas</h1>
+    <div class="overflow-x-auto bg-white rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-700 text-white">
+            <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Cliente ID</th>
+                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Cancha ID</th>
+                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Fecha Reserva</th>
+                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Hora</th>
+                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Usuario ID</th>
+                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Estado</th>
+                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Fecha de Reserva</th>
+            </tr>
+            </thead>
+            <tbody class="bg-gray-800 text-white divide-y divide-gray-700">
+            <!-- Aquí se generan las filas automáticamente -->
+            <tr>
+                <td class="px-6 py-4 whitespace-nowrap">123</td>
+                <td class="px-6 py-4 whitespace-nowrap">456</td>
+                <td class="px-6 py-4 whitespace-nowrap">2024-08-30</td>
+                <td class="px-6 py-4 whitespace-nowrap">10:00 AM</td>
+                <td class="px-6 py-4 whitespace-nowrap">789</td>
+                <td class="px-6 py-4 whitespace-nowrap">Confirmado</td>
+                <td class="px-6 py-4 whitespace-nowrap">2024-08-28</td>
+            </tr>
+            <!-- Añadir más filas según sea necesario -->
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+
